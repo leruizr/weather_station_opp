@@ -58,7 +58,8 @@ class Usuario:
         self._telefono = str(telefono)
 
     def tiene_permiso(self, accion:str) -> bool:
-        return str(accion) in set(p.lower() for p in self._permisos)
+        permisos_normalizados = {str(p).lower() for p in self._permisos}
+        return str(accion).lower() in permisos_normalizados
 
     # ---- PRUEBAS (comentadas) ----
     # u = Usuario(1,"Luis","admin","a@b.com","3000000",[],["crear","leer"]) 
